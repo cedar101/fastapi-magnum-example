@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "fastapi-magnum-example"
+version = "0.1.0"
+description = ""
+authors = ["김백일 <cedar101@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "^0.63.0"
+mangum = "^0.11.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

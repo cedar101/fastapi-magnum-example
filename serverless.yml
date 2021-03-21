@@ -1,0 +1,33 @@
+service: fastapi-mangum
+
+frameworkVersion: ">=1.67.3"
+
+provider:
+  name: aws
+  runtime: python3.8
+  logs:
+    httpApi: true
+  stage: ${env:STAGE}
+  region: ${env:REGION}
+  profile: default
+
+functions:
+  app:
+    handler: app.asgi.handler
+    events:
+      - httpApi:
+          path: '*'
+
+custom:
+  pythonRequirements:
+    dockerizePip: false # non-linux
+
+package:
+  exclude:
+    - node_modules/**
+    - venv/**
+    - .direnv/**
+
+plugins:
+  - serverless-python-requirements
+  - serverless-dotenv-plugin
